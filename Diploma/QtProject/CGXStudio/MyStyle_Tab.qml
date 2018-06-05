@@ -23,14 +23,7 @@ TabViewStyle {
             anchors.margins: 5
             fillMode: Image.Stretch
             source: control.getTab(styleData.index).icon
-            visible: false
-        }
-        Colorize {
-            anchors.fill: iconImage
-            source: iconImage
-            hue: 0.5
-            saturation: 0.5
-            lightness: 0
+            visible: true
         }
     }
 }

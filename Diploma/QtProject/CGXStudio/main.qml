@@ -158,13 +158,13 @@ Window
         {
             property string icon
             active: true
-            icon: "rcc/icons/64/018-box.png"
+            icon: "rcc/icons/64/box.png"
         }
         Tab
         {
             property string icon
             active: true
-            icon: "rcc/icons/64/018-box.png"
+            icon: "rcc/icons/64/box.png"
         }
     }
 
