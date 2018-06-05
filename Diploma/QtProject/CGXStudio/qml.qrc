@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>rcc/applabel_128.png</file>
+        <file>rcc/Без имени-1.png</file>
+        <file>rcc/008-teamwork.png</file>
+        <file>MyStyle_Tab.qml</file>
+        <file>rcc/icons/64/018-box.png</file>
+    </qresource>
+</RCC>
