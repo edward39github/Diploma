@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>RegExps.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,128,128); font-weight: bold; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+RegExps.py</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">from </span><span class="s1">PyQt5.QtCore </span><span class="s0">import </span><span class="s1">QRegExp 
+ 
+ 
+</span><span class="s0">class </span><span class="s1">RegExps(object): 
+ 
+    </span><span class="s0">def </span><span class="s1">__init__(self): 
+        super(RegExps, self).__init__() 
+ 
+    @staticmethod 
+    </span><span class="s0">def </span><span class="s1">UNIX(): 
+        rx = QRegExp(</span><span class="s2">'</span><span class="s0">\\</span><span class="s2">$</span><span class="s0">\\</span><span class="s2">{(.*)</span><span class="s0">\\</span><span class="s2">}'</span><span class="s1">) 
+        rx.setMinimal(</span><span class="s0">True</span><span class="s1">) 
+        </span><span class="s0">return </span><span class="s1">rx 
+ 
+    @staticmethod 
+    </span><span class="s0">def </span><span class="s1">MSWindows(): 
+        rx = QRegExp(</span><span class="s2">'</span><span class="s0">\\</span><span class="s2">%(.*)</span><span class="s0">\\</span><span class="s2">%'</span><span class="s1">) 
+        rx.setMinimal(</span><span class="s0">True</span><span class="s1">) 
+        </span><span class="s0">return </span><span class="s1">rx 
+ 
+    @staticmethod 
+    </span><span class="s0">def </span><span class="s1">variables(): 
+        rx = QRegExp(</span><span class="s2">'</span><span class="s0">\\</span><span class="s2">@</span><span class="s0">\\</span><span class="s2">{(.*)</span><span class="s0">\\</span><span class="s2">}'</span><span class="s1">) 
+        rx.setMinimal(</span><span class="s0">True</span><span class="s1">) 
+        </span><span class="s0">return </span><span class="s1">rx 
+ 
+    @staticmethod 
+    </span><span class="s0">def </span><span class="s1">OS(): 
+        </span><span class="s0">return </span><span class="s1">RegExps.UNIX() 
+ 
+    @staticmethod 
+    </span><span class="s0">def </span><span class="s1">blended(): 
+        rx = QRegExp(</span><span class="s2">'</span><span class="s0">\\</span><span class="s2">$</span><span class="s0">\\</span><span class="s2">{(.*)</span><span class="s0">\\</span><span class="s2">}|</span><span class="s0">\\</span><span class="s2">@(.*)</span><span class="s0">\\</span><span class="s2">@'</span><span class="s1">) 
+        rx.setMinimal(</span><span class="s0">True</span><span class="s1">) 
+        </span><span class="s0">return </span><span class="s1">rx 
+</span></pre>
+</body>
+</html>
