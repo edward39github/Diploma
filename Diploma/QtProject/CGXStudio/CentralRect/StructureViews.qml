@@ -3,10 +3,10 @@ import QtQuick.Controls 2.2
 import QtQuick.Layouts 1.3
 import "../Widgets"
 
-Item
+Rectangle
 {
     width: 330
-
+    color: Qt.hsla(0.0, 0.0, 0.39, 1.0)
     TabBar
     {
         id: bar
@@ -17,7 +17,7 @@ Item
         anchors.top: parent.top
         anchors.rightMargin: 0
         anchors.leftMargin: 0
-        anchors.bottomMargin: 0
+        anchors.topMargin: 0
         onCurrentIndexChanged: { stack.currentIndex = bar.currentIndex }
 
         StructureViewsTab
@@ -59,6 +59,10 @@ Item
             anchors.fill: parent
         }
         FolderView
+        {
+            anchors.fill: parent
+        }
+        AssetView
         {
             anchors.fill: parent
         }

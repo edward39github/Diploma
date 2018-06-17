@@ -10,14 +10,15 @@ TabButton
     property int iconHeight: 48
     property int iconWidth: 48
     property int lineWidth: 1
+    property int linePaddingL: 5
+    property int linePaddingR: 5
 
     id: mainwidget
     anchors.bottom: parent.bottom
     anchors.top: parent.top
     checked: false
-    contentItem: Rectangle
+    contentItem: Item
     {
-        color: Qt.hsla(0.0, 0.0, 0.0, 0.0)
         Image
         {
             id: img
@@ -44,17 +45,17 @@ TabButton
         anchors.fill: parent
         radius: 0
         border.width: 0
-        color: colorButton
+        color: Qt.hsla(0.0, 0.0, 0.35, 1.0)
         Rectangle
         {
             id: line
 
             height: lineWidth
-            anchors.right: parent.right
-            anchors.rightMargin: 0
             anchors.left: parent.left
-            anchors.leftMargin: 0
-            anchors.bottom: parent.bottom
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.leftMargin: linePaddingL
+            anchors.rightMargin: linePaddingR
             anchors.bottomMargin: 0
             color: mainwidget.checked ? colorButtonChecked : Qt.hsla(0.5, 0.0, 0.9, 1.0)
         }

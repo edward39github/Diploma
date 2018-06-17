@@ -6,7 +6,7 @@ Rectangle
 {
     id: mainrect
 
-    color: Qt.hsla(0.0, 0.0, 0.39, 1.0)
+    color: Qt.hsla(0.0, 0.0, 0.5, 1.0)
     border.width: 0
     border.color: Qt.hsla(0.0, 0.0, 0.39, 1.0)
 

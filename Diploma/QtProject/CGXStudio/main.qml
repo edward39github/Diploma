@@ -1,6 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Window 2.3
 import QtQuick.Layouts 1.3
+import QtGraphicalEffects 1.0
 
 import "RightRect" as RRect
 import "TopRect" as TRect
@@ -22,7 +23,7 @@ Window
         id: rightRect
 
         anchors.right: parent.right
-        anchors.top: parent.top
+        anchors.top: topRect.bottom
         anchors.bottom: parent.bottom
     }
 
@@ -30,18 +31,9 @@ Window
     {
         id: topRect
 
-        anchors.right: rightRect.left
+        anchors.right: parent.right
         anchors.top: parent.top
         anchors.left: parent.left
-    }
-
-    LRect.LeftRect
-    {
-        id: leftRect
-
-        anchors.left: parent.left
-        anchors.top: topRect.bottom
-        anchors.bottom: parent.bottom
     }
 
     CRect.CentralRect
@@ -50,7 +42,7 @@ Window
         x: 0
         y: 0
 
-        anchors.left: leftRect.right
+        anchors.left: parent.left
         anchors.top: topRect.bottom
         anchors.right: rightRect.left
         anchors.bottom: parent.bottom
@@ -59,5 +51,19 @@ Window
         anchors.topMargin: 0
         anchors.rightMargin: 0
         anchors.bottomMargin: 0
+    }
+
+    DropShadow
+    {
+        id: topRectShadow
+        anchors.fill: source
+        cached: true
+        horizontalOffset: 3
+        verticalOffset: 3
+        radius: 8.0
+        samples: 16
+        color: Qt.hsla(0.0, 0.0, 0.1, 0.6)
+        smooth: true
+        source: topRect
     }
 }

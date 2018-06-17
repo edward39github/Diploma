@@ -4,12 +4,11 @@ import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
 import "../Widgets"
 
-Rectangle
+Item
 {
     id: rectFiles
     width: 280
     height: 720
-    color: "#4c4c4c"
     opacity: 0.8
     anchors.rightMargin: 0
     anchors.bottomMargin: 0

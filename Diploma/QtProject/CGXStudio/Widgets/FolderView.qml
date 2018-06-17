@@ -22,6 +22,7 @@ ListView
         if( n === "final" ){ return "Финальный результат"; }
         if( n === "temp" ){ return "Временные файлы"; }
         if( n === "resources" ){ return "Ресурсы"; }
+        if( n === "content" ){ return "Контент"; }
         if( n === "render" ){ return "Рендер"; }
         if( n === "references" ){ return "Референсы"; }
         if( n === "work" ){ return "Рабочие файлы"; }

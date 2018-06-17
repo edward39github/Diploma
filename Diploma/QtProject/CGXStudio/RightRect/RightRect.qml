@@ -7,27 +7,33 @@ import "../Widgets"
 Rectangle
 {
     id: mainrect
-    width: 282
+    width: 300
     height: 720
-    color: Qt.hsla(0.0, 0.0, 0.3, 1.0)
+    color: Qt.hsla(0.0, 0.0, 0.35, 1.0)
     border.width: 0
 
-    TabBar {
+    TabBar
+    {
         id: bar
+
         height: 80
         position: TabBar.Header
         spacing: 0
-        anchors.right: parent.right
-        anchors.rightMargin: 0
         anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
         anchors.leftMargin: 0
-        anchors.top: parent.top
-        anchors.topMargin: 0
+        anchors.rightMargin: 0
+        anchors.bottomMargin: 0
+
         onCurrentIndexChanged: { stack.currentIndex = bar.currentIndex }
 
         TabButtonWidget
         {
             id: tabbuttonFilter
+
+            linePaddingL: 10
+            linePaddingR: 5
             width: Math.round(bar.width / 3)
             height: 80
             anchors.bottom: parent.bottom
@@ -42,6 +48,9 @@ Rectangle
         TabButtonWidget
         {
             id: tabbuttonFiles
+
+            linePaddingL: 5
+            linePaddingR: 5
             width: Math.round(bar.width / 3)
             height: 80
             anchors.bottom: parent.bottom
@@ -54,6 +63,9 @@ Rectangle
         TabButtonWidget
         {
             id: tabbuttonTasks
+
+            linePaddingL: 5
+            linePaddingR: 10
             width: Math.round(bar.width / 3)
             height: 80
             anchors.bottom: parent.bottom
@@ -68,9 +80,9 @@ Rectangle
     StackLayout
     {
         id: stack
-        anchors.top: bar.bottom
+        anchors.top: parent.top
         anchors.topMargin: 0
-        anchors.bottom: parent.bottom
+        anchors.bottom: bar.top
         anchors.bottomMargin: 0
         anchors.left: parent.left
         anchors.leftMargin: 0

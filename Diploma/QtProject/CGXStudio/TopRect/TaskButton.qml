@@ -7,13 +7,15 @@ Button
 {
     id: mainwidget
 
-    width: 300
+    width: 310
     height: 80
 
     background: Rectangle
     {
         anchors.fill: mainwidget
-
+        radius: 4
+        border.width: 1
+        border.color: Qt.hsla(0.111, 0.71, 0.84, 0.4)
         color: Qt.hsla(0.111, 0.71, 0.84, 0.3)
     }
 
@@ -31,7 +33,7 @@ Button
             width: 24
             height: 24
             anchors.top: parent.top
-            anchors.topMargin: 8
+            anchors.topMargin: 6
             anchors.left: parent.left
             anchors.leftMargin: 10
             fillMode: Image.PreserveAspectFit
@@ -56,7 +58,7 @@ Button
             font.family: "Arial"
             font.bold: true
             anchors.top: img.top
-            anchors.topMargin: -1
+            anchors.topMargin: -2
             anchors.left: img.right
             anchors.leftMargin: 5
             font.pointSize: 16

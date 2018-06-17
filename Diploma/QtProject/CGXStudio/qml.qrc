@@ -77,5 +77,6 @@
         <file>CentralRect/CentralRect.qml</file>
         <file>CentralRect/StructureViews.qml</file>
         <file>CentralRect/StructureViewsTab.qml</file>
+        <file>Widgets/AssetView.qml</file>
     </qresource>
 </RCC>
