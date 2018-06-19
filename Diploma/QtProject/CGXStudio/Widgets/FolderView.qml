@@ -38,10 +38,16 @@ ListView
         folder: "file:///C:/Users/edward/CG-Cooperation/Square"
         showFiles: false
     }
+    highlight: Rectangle
+    {
+        color: "lightsteelblue"
+        height: rowHeight
+        width: parent.width
+    }
 
     delegate: Rectangle
     {
-        color:  getRowColor(index)
+        color: getRowColor(index)
         height: rowHeight
         width: parent.width
 
@@ -57,22 +63,32 @@ ListView
             anchors.leftMargin: 20
 
             smooth: true
-            source: Icons + "folders/" + model.fileName + ".png"
+            source: Icons.folderIcon(model.fileName, true)
 
             fillMode: Image.Stretch
 
             visible: false
         }
 
+        ColorOverlay
+        {
+            id: colorizer
+
+            anchors.fill: iconImg
+            source: iconImg
+            color: Qt.hsla(0.53, 0.6, 0.6, 1.0)//Qt.hsla(0.08, 0.71, 0.64, 1.0)
+            visible: false
+        }
+
         DropShadow
         {
-            anchors.fill: iconImg
+            source: colorizer
+            anchors.fill: source
             horizontalOffset: 2
             verticalOffset: 2
             radius: 4.0
             samples: 17
             color: Qt.hsla(0.0, 0.0, 0.3, 1.0)
-            source: iconImg
         }
 
         Text
@@ -114,39 +130,11 @@ ListView
             horizontalAlignment: Text.AlignLeft
             verticalAlignment: Text.AlignVCenter
         }
-
-        //        Rectangle
-        //        {
-        //            id: sizeArea
-
-        //            visible: model.isFile
-
-        //            height: 16
-        //            width: 70
-
-        //            anchors.right: parent.right
-        //            anchors.bottom: parent.bottom
-
-        //            anchors.rightMargin: 0
-        //            anchors.bottomMargin: 0
-
-        //            color: Qt.hsla(0.0, 0.0, 1.0, 0.1)
-
-        //            Text
-        //            {
-        //                anchors.centerIn: parent
-        //                anchors.margins: [2, 0, 2, 0]
-        //                color: Qt.hsla(0.5, 0.0, 0.85, 0.7)
-        //                text: model.sizeFile
-        //                elide: Text.ElideRight
-        //                font.weight: Font.Bold
-        //                font.family: "Arial"
-        //                font.bold: false
-        //                font.pixelSize: 12
-        //                horizontalAlignment: Text.AlignHLeft
-        //                verticalAlignment: Text.AlignVCenter
-        //            }
-        //        }
+        MouseArea
+        {
+            anchors.fill: parent
+            onClicked: parent.ListView.view.currentIndex = index
+        }
     }
 }
 

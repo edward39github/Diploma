@@ -3,11 +3,12 @@ import QtQuick.Controls 2.3
 
 Button
 {
-    property string iconPath: Icons + "upload.png"
+    property string iconPath: Icons.icon("upload")
     property color colorButton: Qt.hsla(0.77, 0.34, 0.64, 1.0)
     property color colorButtonPressed: Qt.hsla(0.77, 0.34, 0.74, 1.0)
     property string textButton: "Отправить"
     property int radiusButton: 10
+    property int imageSize: 20
 
     id: mainwidget
     height: 45
@@ -32,9 +33,10 @@ Button
             horizontalAlignment: Text.AlignLeft
             verticalAlignment: Text.AlignVCenter
         }
-        Image {
-            width: 20
-            height: 20
+        Image
+        {
+            width: imageSize
+            height: imageSize
             fillMode: Image.PreserveAspectFit
             anchors.verticalCenterOffset: 0
             anchors.left: txt.right

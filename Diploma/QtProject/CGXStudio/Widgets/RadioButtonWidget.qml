@@ -3,7 +3,7 @@ import QtQuick.Controls 2.3
 
 RadioButton
 {
-    property string iconPath: Icons + "supervisor.png"
+    property string iconPath: Icons.icon("supervisor")
     property int imagePadding: 15
 
     id: mainwidget

@@ -57,7 +57,6 @@
         <file>rcc/icons/users/user.jpg</file>
         <file>Widgets/RoundImageWidget.qml</file>
         <file>rcc/icons/tasksBG.png</file>
-        <file>TopRect/TaskButton.qml</file>
         <file>rcc/icons/remove.png</file>
         <file>LeftRect/LeftRect.qml</file>
         <file>LeftRect/LefItem.qml</file>
@@ -70,13 +69,17 @@
         <file>rcc/icons/branchClosed.png</file>
         <file>rcc/icons/branchOpened.png</file>
         <file>rcc/icons/files/folder.png</file>
-        <file>TopRect/ProjectButton.qml</file>
-        <file>RightRect/FormFilters.qml</file>
-        <file>Widgets/SortItem.qml</file>
+        <file>Widgets/SortFilterItem.qml</file>
         <file>Widgets/FolderView.qml</file>
         <file>CentralRect/CentralRect.qml</file>
         <file>CentralRect/StructureViews.qml</file>
         <file>CentralRect/StructureViewsTab.qml</file>
         <file>Widgets/AssetView.qml</file>
+        <file>Widgets/ImagedButton.qml</file>
+        <file>Widgets/FileGridView.qml</file>
+        <file>FormWindows/Login.qml</file>
+        <file>FormWindows/AppForm.qml</file>
+        <file>Widgets/ProgramView.qml</file>
+        <file>RightRect/FormVariables.qml</file>
     </qresource>
 </RCC>

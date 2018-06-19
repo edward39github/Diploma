@@ -4,7 +4,7 @@ import QtGraphicalEffects 1.0 as FX
 
 Rectangle
 {
-    property string iconPath: "../rcc/icons/users/user.jpg"
+    property string iconPath: Icons.userIcon("user")
     property int radiusImage: 16
 
     width: 32

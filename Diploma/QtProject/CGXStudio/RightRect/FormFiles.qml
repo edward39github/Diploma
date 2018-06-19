@@ -28,13 +28,13 @@ Rectangle
         anchors.leftMargin: 50
         anchors.top: parent.top
         anchors.topMargin: 20
-        iconPath: Icons + "upload.png"
+        iconPath: Icons.icon("upload")
     }
 
     RadioButtonWidget
     {
         id: checkerSupervisor
-        iconPath: Icons + "supervisor.png"
+        iconPath: Icons.icon("supervisor")
         width: 48
         height: 48
         imagePadding: 25
@@ -50,7 +50,7 @@ Rectangle
     RadioButtonWidget
     {
         id: checkerArtists
-        iconPath: Icons + "artists.png"
+        iconPath: Icons.icon("artists")
         width: 48
         height: 48
         imagePadding: 15

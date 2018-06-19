@@ -6,7 +6,7 @@ TabButton
 {
     property color colorButton: Qt.hsla(0.127, 0.8, 0.7, 0.0)
     property color colorButtonChecked: Qt.hsla(0.111, 0.71, 0.64, 1.0)
-    property string iconPath: "rcc/icons/upload.png"
+    property string iconPath: Icons.icon("upload")
     property int iconHeight: 48
     property int iconWidth: 48
     property int lineWidth: 1
@@ -53,7 +53,7 @@ TabButton
             height: lineWidth
             anchors.left: parent.left
             anchors.right: parent.right
-            anchors.top: parent.top
+            anchors.bottom: parent.bottom
             anchors.leftMargin: linePaddingL
             anchors.rightMargin: linePaddingR
             anchors.bottomMargin: 0

@@ -5,6 +5,8 @@ import "../Widgets"
 
 Rectangle
 {
+    property alias objTree: projectTreeView
+
     width: 330
     color: Qt.hsla(0.0, 0.0, 0.39, 1.0)
     TabBar
@@ -14,7 +16,7 @@ Rectangle
         spacing: 0
         anchors.right: parent.right
         anchors.left: parent.left
-        anchors.top: parent.top
+        anchors.bottom: parent.bottom
         anchors.rightMargin: 0
         anchors.leftMargin: 0
         anchors.topMargin: 0
@@ -22,19 +24,19 @@ Rectangle
 
         StructureViewsTab
         {
-            id: tabTree
-            checked: true
-            tabText: "Дерево"
-        }
-        StructureViewsTab
-        {
             id: tabFolder
-            tabText: "Список"
+            tabText: "Структура"
+            checked: true
         }
         StructureViewsTab
         {
             id: tabAsset
             tabText: "Ассеты"
+        }
+        StructureViewsTab
+        {
+            id: tabTree
+            tabText: "Дерево"
         }
     }
 
@@ -43,27 +45,28 @@ Rectangle
         id: stack
 
         anchors.left: parent.left
-        anchors.top: bar.bottom
+        anchors.top: parent.top
         anchors.right: parent.right
-        anchors.bottom: parent.bottom
+        anchors.bottom: bar.top
 
         anchors.topMargin: 0
         anchors.leftMargin: 0
         anchors.rightMargin: 0
         anchors.bottomMargin: 0
 
-        currentIndex: 0
+        currentIndex: bar.currentIndex
 
-        FileView
-        {
-            anchors.fill: parent
-        }
         FolderView
         {
             anchors.fill: parent
         }
         AssetView
         {
+            anchors.fill: parent
+        }
+        FileView
+        {
+            id: projectTreeView
             anchors.fill: parent
         }
     }

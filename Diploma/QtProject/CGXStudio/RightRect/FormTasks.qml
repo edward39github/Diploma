@@ -28,7 +28,7 @@ Rectangle
         anchors.leftMargin: 50
         anchors.top: parent.top
         anchors.topMargin: 20
-        iconPath: Icons + "upload.png"
+        iconPath: Icons.icon("upload")
     }
 
     DragDropWidget

@@ -28,6 +28,10 @@ Project {
         ]
 
         files: [
+            "cgxqmliconprovider.cpp",
+            "cgxqmliconprovider.h",
+            "fileinfo.cpp",
+            "fileinfo.h",
             "main.cpp",
             "qml.qrc",
             "systemmodel.cpp",

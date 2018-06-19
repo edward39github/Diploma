@@ -46,25 +46,25 @@ ListView
     model: ListModel {
         ListElement {
             name: "car_rastr"
-            iconPath: "../rcc/icons/users/01.jpg"
+            iconPath: Icons.userIcon("01")
             isChecked: false
         }
 
         ListElement {
             name: "description"
-            iconPath: "../rcc/icons/users/02.jpg"
+            iconPath: Icons.userIcon("02")
             isChecked: true
         }
 
         ListElement {
             name: "car_svg"
-            iconPath: "../rcc/icons/users/03.jpg"
+            iconPath: Icons.userIcon("03")
             isChecked: false
         }
 
         ListElement {
             name: "car_vector"
-            iconPath: "../rcc/icons/users/04.jpg"
+            iconPath: Icons.userIcon("04")
             isChecked: true
         }
     }

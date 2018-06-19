@@ -124,7 +124,7 @@ Rectangle
                     anchors.left: parent.left
                     anchors.leftMargin: 10
                     anchors.verticalCenter: parent.verticalCenter
-                    source: Icons + iconPath
+                    source: Icons.fileIcon(iconPath)
                     fillMode: Image.PreserveAspectFit
                     smooth: true
                     mipmap: true
@@ -146,7 +146,7 @@ Rectangle
                     anchors.right: parent.right
                     anchors.rightMargin: 15
                     anchors.verticalCenter: parent.verticalCenter
-                    source: Icons + "remove.png"
+                    source: Icons.icon("remove")
                     fillMode: Image.Stretch
                     scale: 1
                     smooth: true
@@ -168,22 +168,22 @@ Rectangle
             model: ListModel {
                 ListElement {
                     name: "car_rastr"
-                    iconPath: "files/png.png"
+                    iconPath: "png"
                 }
 
                 ListElement {
                     name: "description"
-                    iconPath: "files/txt.png"
+                    iconPath: "txt"
                 }
 
                 ListElement {
                     name: "car_svg"
-                    iconPath: "files/svg.png"
+                    iconPath: "svg"
                 }
 
                 ListElement {
                     name: "car_vector"
-                    iconPath: "files/ai.png"
+                    iconPath: "ai"
                 }
             }
         }
@@ -204,7 +204,7 @@ Rectangle
                     anchors.left: parent.left
                     anchors.leftMargin: 10
                     anchors.verticalCenter: parent.verticalCenter
-                    source: Icons + "package.png"
+                    source: Icons.icon("package")
                     fillMode: Image.Stretch
                     scale: 1
                     smooth: true
@@ -227,7 +227,7 @@ Rectangle
                     anchors.right: parent.right
                     anchors.rightMargin: 15
                     anchors.verticalCenter: parent.verticalCenter
-                    source: Icons + "remove.png"
+                    source: Icons.icon("remove")
                     fillMode: Image.Stretch
                     scale: 1
                     smooth: true

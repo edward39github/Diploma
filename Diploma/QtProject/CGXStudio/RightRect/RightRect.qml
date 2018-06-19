@@ -16,34 +16,17 @@ Rectangle
     {
         id: bar
 
-        height: 80
+        height: 60
         position: TabBar.Header
         spacing: 0
         anchors.left: parent.left
         anchors.right: parent.right
-        anchors.bottom: parent.bottom
+        anchors.top: parent.top
         anchors.leftMargin: 0
         anchors.rightMargin: 0
         anchors.bottomMargin: 0
 
         onCurrentIndexChanged: { stack.currentIndex = bar.currentIndex }
-
-        TabButtonWidget
-        {
-            id: tabbuttonFilter
-
-            linePaddingL: 10
-            linePaddingR: 5
-            width: Math.round(bar.width / 3)
-            height: 80
-            anchors.bottom: parent.bottom
-            anchors.top: parent.top
-            iconPath: Icons + "filter.png"
-            iconWidth: 24
-            iconHeight: 24
-            checked: true
-            colorButton: Qt.hsla(0.0, 0.0, 0.3, 1.0)
-        }
 
         TabButtonWidget
         {
@@ -55,7 +38,7 @@ Rectangle
             height: 80
             anchors.bottom: parent.bottom
             anchors.top: parent.top
-            iconPath: Icons + "files.png"
+            iconPath: Icons.icon("files")
             iconWidth: 24
             iconHeight: 24
             colorButton: Qt.hsla(0.0, 0.0, 0.3, 1.0)
@@ -70,7 +53,22 @@ Rectangle
             height: 80
             anchors.bottom: parent.bottom
             anchors.top: parent.top
-            iconPath: Icons + "tasks.png"
+            iconPath: Icons.icon("tasks")
+            iconWidth: 24
+            iconHeight: 24
+            colorButton: Qt.hsla(0.0, 0.0, 0.3, 1.0)
+        }
+        TabButtonWidget
+        {
+            id: tabbuttonVariables
+
+            linePaddingL: 5
+            linePaddingR: 10
+            width: Math.round(bar.width / 3)
+            height: 80
+            anchors.bottom: parent.bottom
+            anchors.top: parent.top
+            iconPath: Icons.icon("variables")
             iconWidth: 24
             iconHeight: 24
             colorButton: Qt.hsla(0.0, 0.0, 0.3, 1.0)
@@ -80,9 +78,9 @@ Rectangle
     StackLayout
     {
         id: stack
-        anchors.top: parent.top
+        anchors.bottom: parent.bottom
         anchors.topMargin: 0
-        anchors.bottom: bar.top
+        anchors.top: bar.bottom
         anchors.bottomMargin: 0
         anchors.left: parent.left
         anchors.leftMargin: 0
@@ -90,10 +88,10 @@ Rectangle
         anchors.rightMargin: 0
         currentIndex: bar.currentIndex
 
-        FormFilters{ }
-
         FormFiles{ }
 
         FormTasks{ }
+
+        FormVariables{ anchors.topMargin: 10}
     }
 }
