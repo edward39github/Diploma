@@ -5,6 +5,8 @@ import "../Widgets"
 
 Rectangle
 {
+    property int toolSize: 16
+
     id: mainrect
 
     color: Qt.hsla(0.0, 0.0, 0.5, 1.0)
@@ -19,48 +21,19 @@ Rectangle
         source: Icons.icon("grid")
     }
 
-    StructureViews
+    FileGridView
     {
-        id: explorer
+        id: folder
 
-        width: 330
-
-        anchors.left: mainrect.left
-        anchors.top: mainrect.top
-        anchors.bottom: mainrect.bottom
-
-        anchors.leftMargin: 0
-        anchors.topMargin: 0
-        anchors.bottomMargin: 0
-        objTree.onPathChanged:
-        {
-            folderContent.model.folder = "file:///" + explorer.objTree.path
-        }
-    }
-
-    Row
-    {
-        id: sortFilterPanel
-
-        height: 55
-
-        anchors.left: explorer.right
         anchors.top: parent.top
+        anchors.left: parent.left
         anchors.right: parent.right
+        anchors.bottom: parent.bottom
 
-        anchors.leftMargin: 55
-        anchors.topMargin: 0
-
-        spacing: 15
-
-        SortFilterItem{ name: ".obj"; num: "1" }
-        SortFilterItem{ name: ".fbx"; num: "2" }
-        SortFilterItem{ name: ".abc"; num: "3" }
-        SortFilterItem{ name: ".png"; num: "4" }
-        SortFilterItem{ name: ".jpg"; num: "5" }
-        SortFilterItem{ name: ".tif"; num: "6" }
-        SortFilterItem{ name: ".exr"; num: "7" }
-        SortFilterItem{ name:  ".py"; num: "8" }
+        anchors.leftMargin: 35
+        anchors.topMargin: 45
+        anchors.rightMargin: 55
+        anchors.bottomMargin: 110
     }
 
     Slider
@@ -69,11 +42,10 @@ Rectangle
         value: 0.5
         orientation: Qt.Vertical
 
-        anchors.left: explorer.right
-        anchors.top: folderContent.top
-        anchors.bottom: folderContent.bottom
-
-        width: 55
+        anchors.left: parent.left
+        anchors.top: folder.top
+        anchors.bottom: folder.bottom
+        anchors.right: folder.left
 
         background: Rectangle
         {
@@ -100,33 +72,125 @@ Rectangle
             radius: 13
             color: Qt.hsla(0.0, 0.0, 0.9, 1.0)
         }
-
-
     }
 
-    FileGridView
+    ColumnLayout
     {
-        id: folderContent
+        id: filterPanel
 
-        anchors.top: sortFilterPanel.bottom
-        anchors.left: scaleSlider.right
+        anchors.top: toolPanel.bottom
         anchors.right: parent.right
         anchors.bottom: programs.top
+        anchors.left: folder.right
 
         anchors.leftMargin: 0
-        anchors.topMargin: 0
-        anchors.rightMargin: 20
-        anchors.bottomMargin: 10
+        anchors.rightMargin: 0
+        anchors.topMargin: spacing
+        anchors.bottomMargin: spacing
+
+        spacing: 10
+
+        SortFilterItem{ name: ".obj"; num: "1"; width: Layout.preferredWidth; height: Layout.preferredHeight; Layout.fillWidth: true; Layout.fillHeight: true }
+        SortFilterItem{ name: ".fbx"; num: "2"; width: Layout.preferredWidth; height: Layout.preferredHeight; Layout.fillWidth: true; Layout.fillHeight: true }
+        SortFilterItem{ name: ".abc"; num: "3"; width: Layout.preferredWidth; height: Layout.preferredHeight; Layout.fillWidth: true; Layout.fillHeight: true }
+        SortFilterItem{ name: ".png"; num: "4"; width: Layout.preferredWidth; height: Layout.preferredHeight; Layout.fillWidth: true; Layout.fillHeight: true }
+        SortFilterItem{ name: ".jpg"; num: "5"; width: Layout.preferredWidth; height: Layout.preferredHeight; Layout.fillWidth: true; Layout.fillHeight: true }
+        SortFilterItem{ name: ".tif"; num: "6"; width: Layout.preferredWidth; height: Layout.preferredHeight; Layout.fillWidth: true; Layout.fillHeight: true }
+        SortFilterItem{ name: ".exr"; num: "7"; width: Layout.preferredWidth; height: Layout.preferredHeight; Layout.fillWidth: true; Layout.fillHeight: true }
+        SortFilterItem{ name:  ".py"; num: "8"; width: Layout.preferredWidth; height: Layout.preferredHeight; Layout.fillWidth: true; Layout.fillHeight: true }
+        //Item { Layout.fillWidth: true; Layout.fillHeight: true }
     }
 
     ProgramView
     {
         id: programs
 
-        width: 700
-
-        anchors.horizontalCenter: folderContent.horizontalCenter
+        anchors.top: folder.bottom
         anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+
+        anchors.bottomMargin: 0
+        anchors.topMargin: 20
+    }
+
+    Rectangle
+    {
+        id: toolPanel
+
+        anchors.top: parent.top
+        anchors.bottom: folder.top
+        anchors.left: parent.left
+        anchors.right: parent.right
+
         anchors.bottomMargin: 10
+        anchors.topMargin: 0
+
+        color: programs.color
+
+        Row
+        {
+            width: 400
+
+            anchors.centerIn: parent
+
+            spacing: ( width / 5 ) + toolSize
+
+            Image
+            {
+                width: toolSize
+                height: toolSize
+
+                anchors.verticalCenter: parent.verticalCenter
+
+                source: Icons.icon("copy")
+                mipmap: true
+                fillMode: Image.Stretch
+            }
+            Image
+            {
+                width: toolSize
+                height: toolSize
+
+                anchors.verticalCenter: parent.verticalCenter
+
+                source: Icons.icon("remove")
+                mipmap: true
+                fillMode: Image.Stretch
+            }
+            Image
+            {
+                width: toolSize
+                height: toolSize
+
+                anchors.verticalCenter: parent.verticalCenter
+
+                source: Icons.icon("folder")
+                mipmap: true
+                fillMode: Image.Stretch
+            }
+            Image
+            {
+                width: toolSize
+                height: toolSize
+
+                anchors.verticalCenter: parent.verticalCenter
+
+                source: Icons.icon("file")
+                mipmap: true
+                fillMode: Image.Stretch
+            }
+            Image
+            {
+                width: toolSize
+                height: toolSize
+
+                anchors.verticalCenter: parent.verticalCenter
+
+                source: Icons.icon("edit")
+                mipmap: true
+                fillMode: Image.Stretch
+            }
+        }
     }
 }

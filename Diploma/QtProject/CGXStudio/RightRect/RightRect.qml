@@ -9,7 +9,7 @@ Rectangle
     id: mainrect
     width: 300
     height: 720
-    color: Qt.hsla(0.0, 0.0, 0.35, 1.0)
+    color: Qt.hsla(0.63, 0.03, 0.35, 1.0)
     border.width: 0
 
     TabBar
@@ -41,7 +41,7 @@ Rectangle
             iconPath: Icons.icon("files")
             iconWidth: 24
             iconHeight: 24
-            colorButton: Qt.hsla(0.0, 0.0, 0.3, 1.0)
+            colorButton: mainrect.color
         }
         TabButtonWidget
         {
@@ -56,7 +56,7 @@ Rectangle
             iconPath: Icons.icon("tasks")
             iconWidth: 24
             iconHeight: 24
-            colorButton: Qt.hsla(0.0, 0.0, 0.3, 1.0)
+            colorButton: mainrect.color
         }
         TabButtonWidget
         {
@@ -71,7 +71,7 @@ Rectangle
             iconPath: Icons.icon("variables")
             iconWidth: 24
             iconHeight: 24
-            colorButton: Qt.hsla(0.0, 0.0, 0.3, 1.0)
+            colorButton: mainrect.color
         }
     }
 

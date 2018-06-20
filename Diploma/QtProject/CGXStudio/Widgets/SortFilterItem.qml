@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.3
+import QtQuick.Layouts 1.3
 
 Rectangle
 {   
@@ -8,68 +9,74 @@ Rectangle
 
     opacity: 0.4
 
-    width: 100
-    height: 22
+    Layout.fillHeight: true
+    Layout.fillWidth: true
 
-    anchors.verticalCenter: parent.verticalCenter
-
-    color: Qt.hsla(0.0, 0.0, 1.0, 0.0)
-    border.width: 1
+    color: Qt.hsla(0.0, 0.0, 1.0, 0.15)
     radius: 0
+    border.width: 1
     border.color: Qt.hsla(0.0, 0.0, 1.0, 0.3)
 
-    Rectangle
+    TextInput
     {
-        id: sortArea
+        id: numberInput
 
-        height: parent.height
-        width: parent.height
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: filterName.top
 
-        anchors.left: parent.left
+        anchors.topMargin: 3
+
+        text: num
+        color: Qt.hsla(0.0, 0.0, 0.9, 1.0)
+
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+
+        font.weight: Font.ExtraBold
+        font.family: "Arial"
+        font.bold: true
+        font.pixelSize: 12
+    }
+
+    Text
+    {
+        id: filterName
+
         anchors.verticalCenter: parent.verticalCenter
+        anchors.left: parent.left
+        anchors.right: parent.right
 
-        color: Qt.hsla(0.0, 0.0, 1.0, 0.5)
+        anchors.leftMargin: 3
+        anchors.rightMargin: 3
+        anchors.verticalCenterOffset: -5
 
-        TextInput
-        {
-            id: numberInput
-            anchors.centerIn: parent
-            color: "#ffffff"
-            text: num
-            horizontalAlignment: Text.AlignLeft
-            verticalAlignment: Text.AlignVCenter
-            font.weight: Font.ExtraBold
-            font.family: "Arial"
-            font.bold: true
-            font.pixelSize: 10
-        }
+        text: name
+        color: Qt.hsla(0.0, 0.0, 1.0, 1.0)
+        elide: Text.ElideRight
+
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+
+        font.weight: Font.ExtraBold
+        font.family: "Arial"
+        font.bold: true
+        font.pixelSize: 12
     }
 
     SwitchButtonWidget
     {
         id: switcher
 
-        width: 32
         height: 16
 
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.left: sortArea.right
-        anchors.leftMargin: 8
+        anchors.top: filterName.bottom
+        anchors.left: parent.left
+        anchors.right: parent.right
+
+        anchors.leftMargin: 3
+        anchors.topMargin: 3
+        anchors.rightMargin: 3
 
         checked: true
-    }
-
-    Text
-    {
-        text: name
-        color: Qt.hsla(0.0, 0.0, 1.0, 0.7)
-        elide: Text.ElideRight
-        font.weight: Font.ExtraBold
-        font.family: "Arial"
-        font.bold: true
-        font.pixelSize: 11
-        anchors.verticalCenter: sortArea.verticalCenter
-        anchors.left: switcher.right
-        anchors.leftMargin: 3
     }
 }

@@ -94,7 +94,7 @@ Item
             id: treestyle
 
             alternateBackgroundColor: Qt.hsla(0.0, 0.0, 0.41, 1.0)
-            indentation: 20
+            indentation: 27
 
             scrollBarBackground: Rectangle { color: Qt.hsla(0.0, 0.0, 0.0, 0.0) }
             handle: Rectangle { color: Qt.hsla(0.0, 0.0, 0.0, 0.0) }

@@ -121,7 +121,7 @@ Rectangle
         radius: 0
         anchors.left: spliterLine.right
         anchors.leftMargin: 32
-        color: Qt.hsla(0.53, 0.7, 0.6, 0.15)
+        color: Qt.hsla(0.28, 0.7, 0.6, 0.2)
 
         Image
         {

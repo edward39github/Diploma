@@ -1,105 +1,107 @@
 import QtQuick 2.9
+import QtGraphicalEffects 1.0
+
+import "../Widgets"
+
 
 Rectangle
 {
 
     width: parent.width
-    height: 70
-    color: Qt.hsla(0.0, 0.0, 1.0, 0.0)
+    height: 80
+    color: Qt.hsla(0.0, 0.0, 1.0, 0.3)
 
-    PathView
+    Item
     {
-        property int itemSize: 32
+        id: content
 
-        id: view
         anchors.fill: parent
-//            highlight: Rectangle
-//            {
-//                width: 80
-//                height: 80
-//                color: "lightsteelblue"
-//            }
-        preferredHighlightBegin: 0.5
-        preferredHighlightEnd: 0.5
 
-        delegate: Image
+        PathView
         {
-            width: PathView.size
-            height: PathView.size
-            opacity: PathView.opacity
-            smooth: true
-            source: Icons.programIcon(icon)
-            MouseArea
+            property int itemSize: 70
+
+            id: view
+            anchors.fill: parent
+
+            preferredHighlightBegin: 0.5
+            preferredHighlightEnd: 0.5
+
+            delegate: RoundImageWidget
             {
-                anchors.fill: parent
-                onClicked: view.currentIndex = index
+                width: PathView.size
+                height: PathView.size
+
+                radiusImage: PathView.size / 2
+
+                opacity: PathView.opacity
+                smooth: true
+                iconPath: Icons.programIcon(icon)
+
+                MouseArea
+                {
+                    anchors.fill: parent
+                    onClicked: view.currentIndex = index
+                }
+            }
+
+
+            path: Path
+            {
+                startX: 0
+                startY: view.height / 2
+                PathAttribute { name: "size"; value: view.itemSize / 7}
+                PathAttribute { name: "opacity"; value: 1.0 / 7}
+
+                PathAttribute { name: "size"; value: view.itemSize / 6}
+                PathAttribute { name: "opacity"; value: 1.0 / 6}
+                PathLine { x: view.width / 6; y: view.height / 2}
+
+                PathAttribute { name: "size"; value: view.itemSize / 5}
+                PathAttribute { name: "opacity"; value: 1.0 / 5}
+                PathLine { x: view.width / 5; y: view.height / 2 }
+
+                PathAttribute { name: "size"; value: view.itemSize / 4}
+                PathAttribute { name: "opacity"; value: 1.0 / 4}
+                PathLine { x: view.width / 4; y: view.height / 2 }
+
+                PathAttribute { name: "size"; value: view.itemSize / 3}
+                PathAttribute { name: "opacity"; value: 1.0 / 3}
+                PathLine { x: view.width / 3; y: view.height / 2 }
+
+                PathAttribute { name: "size"; value: view.itemSize / 2}
+                PathAttribute { name: "opacity"; value: 1.0 / 2}
+                PathLine { x: view.width / 2; y: view.height / 2 }
+
+                PathAttribute { name: "size"; value: view.itemSize }
+                PathAttribute { name: "opacity"; value: 1.0 }
+                PathLine { x: view.width / 1; y: view.height / 2 }
+            }
+
+            model:ListModel
+            {
+                ListElement { icon: "houdini" }
+                ListElement { icon: "maya" }
+                ListElement { icon: "painter" }
+                ListElement { icon: "designer" }
+                ListElement { icon: "PS" }
+                ListElement { icon: "zbrush" }
+                ListElement { icon: "nuke" }
+                ListElement { icon: "blender" }
+                ListElement { icon: "UE" }
             }
         }
-
-        path: Path
-        {
-            startX: 0
-            startY: view.height / 2
-
-            PathAttribute { name: "size"; value: view.itemSize }
-            PathAttribute { name: "opacity"; value: 0.25 }
-            PathCurve
-            {
-                x: view.width / 5
-                y: view.height / 2
-            }
-            PathCurve
-            {
-                x: view.width / 5 * 2
-                y: view.height / 2
-            }
-            PathAttribute { name: "size"; value: view.itemSize }
-            PathAttribute { name: "opacity"; value: 0.5 }
-            PathPercent { value: 0.49 }
-
-            PathLine { relativeX: 0; relativeY: 0 } // разделитель
-
-            PathAttribute { name: "size"; value: view.itemSize * 2 }
-            PathAttribute { name: "opacity"; value: 1 }
-            PathLine
-            {
-                x: view.width / 5 * 3
-                y: view.height / 2
-            }
-            PathAttribute { name: "size"; value: view.itemSize * 2 }
-            PathAttribute { name: "opacity"; value: 1 }
-            PathPercent { value: 0.51 }
-
-            PathLine { relativeX: 0; relativeY: 0 } // разделитель
-
-            PathAttribute { name: "size"; value: view.itemSize }
-            PathAttribute { name: "opacity"; value: 0.5 }
-            PathCurve
-            {
-                x: view.width / 5 * 4
-                y: view.height / 2
-            }
-            PathCurve
-            {
-                x: view.width
-                y: view.height / 2
-            }
-            PathPercent { value: 1 }
-            PathAttribute { name: "size"; value: view.itemSize }
-            PathAttribute { name: "opacity"; value: 0.25 }
-        }
-
-        model:ListModel
-        {
-            ListElement { icon: "houdini" }
-            ListElement { icon: "maya" }
-            ListElement { icon: "painter" }
-            ListElement { icon: "designer" }
-            ListElement { icon: "PS" }
-            ListElement { icon: "zbrush" }
-            ListElement { icon: "nuke" }
-            ListElement { icon: "blender" }
-            ListElement { icon: "UE" }
-        }
+    }
+    DropShadow
+    {
+        source: content
+        anchors.fill: source
+        cached: true
+        horizontalOffset: 3
+        verticalOffset: 3
+        radius: 7.0
+        samples: 16
+        color: Qt.hsla(0.0, 0.0, 0.1, 0.7)
+        smooth: true
     }
 }

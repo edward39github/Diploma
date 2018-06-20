@@ -78,8 +78,12 @@
         <file>Widgets/ImagedButton.qml</file>
         <file>Widgets/FileGridView.qml</file>
         <file>FormWindows/Login.qml</file>
-        <file>FormWindows/AppForm.qml</file>
+        <file>FormWindows/ProjectView.qml</file>
         <file>Widgets/ProgramView.qml</file>
         <file>RightRect/FormVariables.qml</file>
+        <file>Widgets/LeftPanelButton.qml</file>
+        <file>FormWindows/VariablesForm/VariablesView.qml</file>
+        <file>Widgets/InputWidget.qml</file>
+        <file>Widgets/InputWidgetForm.ui.qml</file>
     </qresource>
 </RCC>

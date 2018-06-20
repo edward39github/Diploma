@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     SystemModel *fsm = new SystemModel(&engine);
     CGXQMLIconProvider *ip = new CGXQMLIconProvider(&engine);
 
-    qmlRegisterUncreatableType<SystemModel>("CGXStudio", 1, 0, "SystemModel", "Cannot create a SystemModel instance.");
+//    qmlRegisterUncreatableType<SystemModel>("CGXStudio", 1, 0, "SystemModel", "Cannot create a SystemModel instance.");
 
     engine.rootContext()->setContextProperty("FileInformator", fi);
     engine.rootContext()->setContextProperty("Icons", ip);

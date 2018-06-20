@@ -45,7 +45,7 @@ TabButton
         anchors.fill: parent
         radius: 0
         border.width: 0
-        color: Qt.hsla(0.0, 0.0, 0.35, 1.0)
+        color: mainrect.color
         Rectangle
         {
             id: line
