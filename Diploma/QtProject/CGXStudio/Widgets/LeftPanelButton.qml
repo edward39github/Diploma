@@ -4,7 +4,7 @@ import QtGraphicalEffects 1.0 as FX
 
 TabButton
 {
-    property color colorButton: Qt.hsla(0.63, 0.03, 0.25, 1.0)
+    property color colorButton: Qt.hsla(0.53, 0.0, 0.25, 1.0)
     property color colorButtonChecked: Qt.hsla(0.0, 0.0, 0.7, 1.0)
     property string iconPath: Icons.icon("upload")
     property int iconHeight: 24

@@ -12,42 +12,20 @@ Rectangle
     id: mainrect
     width: 1300
     height: 80
+
     //color: Qt.hsla(0.0, 0.0, 0.25, 1.0)
 
     gradient: Gradient
     {
-        GradientStop { position: 1.0; color: Qt.hsla(0.0, 0.0, 0.25, 1.0) }
-        GradientStop { position: 0.0; color: Qt.hsla(0.0, 0.0, 0.36, 1.0) }
+        GradientStop { position: 1; color: Qt.hsla(0.53, 0.2, 0.25, 1.0) }
+        GradientStop { position: 0.0; color: Qt.hsla(0.53, 0.2, 0.36, 1.0) }
     }
 
     opacity: 1
     border.width: 0
 
-    Rectangle {
-        id: projectButton
-        x: 804
-        y: 9
-        width: 60
-        height: 60
-        color: "#999999"
-        radius: 30
-        anchors.verticalCenter: parent.verticalCenter
-        z: 1
-        border.width: 0
-        anchors.right: parent.right
-        anchors.rightMargin: 7
-
-        Image {
-            id: projectImage
-
-            anchors.centerIn: parent
-            width: 24
-            height: 16
-            source: Icons.icon("arrowR")
-        }
-    }
-
-    Text {
+    Text
+    {
         id: userName
         color: "#b3b3b3"
         text: qsTr("Роман Поляков")
@@ -69,16 +47,7 @@ Rectangle
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: 8
-        radiusImage: 14
-    }
-
-    MouseArea
-    {
-        anchors.fill: userImage
-        onClicked:
-        {
-            loginDialog.open()
-        }
+        radiusImage: 32
     }
 
     Text {
@@ -120,12 +89,12 @@ Rectangle
 
         radius: 0
         anchors.left: spliterLine.right
-        anchors.leftMargin: 32
-        color: Qt.hsla(0.28, 0.7, 0.6, 0.2)
+        anchors.leftMargin: 45
+        color: Qt.hsla(0.28, 0.0, 0.6, 0.2)
 
         Image
         {
-            id: img
+            id: iconImage
 
             width: 32
             height: 32
@@ -140,8 +109,9 @@ Rectangle
         }
         FX.ColorOverlay
         {
-            anchors.fill: img
-            source: img
+            id: iconCO
+            anchors.fill: iconImage
+            source: iconImage
             color: Qt.hsla(0.94, 0.34, 0.8, 1.0)
         }
 
@@ -154,7 +124,7 @@ Rectangle
             font.family: "Arial"
             font.bold: true
             anchors.top: parent.top
-            anchors.left: img.right
+            anchors.left: iconImage.right
             anchors.topMargin: 7
             anchors.leftMargin: 10
             font.pointSize: 14
@@ -183,7 +153,58 @@ Rectangle
             anchors.right: parent.right
             anchors.rightMargin: 5
         }
+
+        FX.ColorOverlay
+        {
+            id: cornerCO
+            x: 295
+            y: 0
+            anchors.fill: cornerImage
+            source: cornerImage
+            color: Qt.hsla(0.53, 0.6, 0.6, 1.0)
+        }
+
+        Image
+        {
+            id: cornerImage
+            x: 309
+            width: 16
+            height: 16
+            anchors.top: parent.top
+            anchors.topMargin: 0
+            anchors.right: parent.right
+            anchors.rightMargin: 0
+            source: Icons.icon("corner")
+            smooth: true
+            visible: false
+            scale: 0.8
+
+        }
+
+        MouseArea
+        {
+            anchors.fill: parent
+            onClicked:
+            {
+                tasksList.visible = !tasksList.visible
+            }
+        }
     }
+
+    TasksList
+    {
+        id: tasksList
+
+        x: taskButton.x
+        y: taskButton.height
+
+        width: taskButton.width
+        height: 425
+
+        visible: false
+    }
+
+
 
     Image {
         id: userExitButton
@@ -207,8 +228,10 @@ Rectangle
         anchors.leftMargin: 32
     }
 
-    Rectangle {
-        id: projectTitleLine
+    Rectangle
+    {
+        id: projectButton
+
         x: 925
         width: 338
         height: 44
@@ -216,8 +239,8 @@ Rectangle
         radius: 22
         anchors.verticalCenterOffset: 0
         anchors.verticalCenter: parent.verticalCenter
-        anchors.right: projectButton.left
-        anchors.rightMargin: -30
+        anchors.right: parent.right
+        anchors.rightMargin: 18
         anchors.bottom: projectArea.top
         anchors.bottomMargin: 0
 
@@ -278,26 +301,39 @@ Rectangle
             font.pixelSize: 14
         }
 
-    }
+        Image {
+            id: projectImage
+            x: 267
+            y: 14
 
-    Image
+            anchors.centerIn: parent
+            width: 24
+            height: 16
+            anchors.verticalCenterOffset: 0
+            anchors.horizontalCenterOffset: 145
+            source: Icons.icon("arrowR")
+        }
+
+        MouseArea
+        {
+            anchors.fill: parent
+            onClicked:
+            {
+                projectList.visible = !projectList.visible
+            }
+        }
+    }
+    ProjecstList
     {
-        id: cornerImage
-        x: 695
-        y: 0
-        width: 16
-        height: 16
-        source: Icons.icon("corner")
-        smooth: true
+        id: projectList
+
+
+        anchors.top: projectButton.bottom
+        anchors.horizontalCenter: projectButton.horizontalCenter
+
+        width: projectButton.width - 40
+        height: 225
+
         visible: false
-        scale: 0.8
-
     }
-    FX.ColorOverlay
-    {
-        anchors.fill: cornerImage
-        source: cornerImage
-        color: Qt.hsla(0.53, 0.6, 0.6, 1.0)
-    }
-
 }

@@ -4,7 +4,6 @@ import QtQuick.Layouts 1.3
 import QtGraphicalEffects 1.0
 
 import "../RightRect" as RRect
-import "../LeftRect" as LRect
 import "../CentralRect" as CRect
 
 import "../Widgets"

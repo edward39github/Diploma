@@ -58,8 +58,6 @@
         <file>Widgets/RoundImageWidget.qml</file>
         <file>rcc/icons/tasksBG.png</file>
         <file>rcc/icons/remove.png</file>
-        <file>LeftRect/LeftRect.qml</file>
-        <file>LeftRect/LefItem.qml</file>
         <file>rcc/icons/library.png</file>
         <file>rcc/icons/programs.png</file>
         <file>rcc/icons/project.png</file>
@@ -85,5 +83,7 @@
         <file>FormWindows/VariablesForm/VariablesView.qml</file>
         <file>Widgets/InputWidget.qml</file>
         <file>Widgets/InputWidgetForm.ui.qml</file>
+        <file>TopRect/TasksList.qml</file>
+        <file>TopRect/ProjecstList.qml</file>
     </qresource>
 </RCC>

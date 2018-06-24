@@ -5,7 +5,6 @@ import QtGraphicalEffects 1.0
 
 import "RightRect" as RRect
 import "TopRect" as TRect
-import "LeftRect" as LRect
 import "CentralRect" as CRect
 
 import "FormWindows"
@@ -24,6 +23,8 @@ Window
     {
         id: topRect
 
+        z: 1
+
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.left: parent.left
@@ -34,12 +35,12 @@ Window
         id: viewsPanel
 
         width: 70
-
+        z: 1
         anchors.left: parent.left
         anchors.top: topRect.bottom
         anchors.bottom: parent.bottom
 
-        color: Qt.hsla(0.63, 0.03, 0.25, 1.0)
+        color: Qt.hsla(0.53, 0.0, 0.25, 1.0)
 
         Column
         {
@@ -106,7 +107,7 @@ Window
         anchors.top: topRect.bottom
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-
+        z: 0
         currentIndex: 0
 
         ProjectView
@@ -127,5 +128,18 @@ Window
         color: Qt.hsla(0.0, 0.0, 0.1, 0.7)
         smooth: true
         source: topRect
+    }
+    DropShadow
+    {
+        id: viewsPanelShadow
+        anchors.fill: source
+        cached: true
+        horizontalOffset: 3
+        verticalOffset: 5
+        radius: 9.0
+        samples: 16
+        color: Qt.hsla(0.0, 0.0, 0.1, 0.7)
+        smooth: true
+        source: viewsPanel
     }
 }

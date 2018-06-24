@@ -12,8 +12,8 @@ ListView
 
     function getRowColor(row)
     {
-        if( row % 2 == 0 ){ return Qt.hsla(0.0, 0.0, 0.39, 1.0); }
-        return Qt.hsla(0.0, 0.0, 0.41, 1.0);
+        if( row % 2 == 0 ){ return Qt.hsla(0.63, 0.03, 0.39, 1.0); }
+        return Qt.hsla(0.63, 0.03, 0.41, 1.0);
     }
 
     function folderName(n)
@@ -76,7 +76,7 @@ ListView
 
             anchors.fill: iconImg
             source: iconImg
-            color: Qt.hsla(0.53, 0.6, 0.6, 1.0)//Qt.hsla(0.08, 0.71, 0.64, 1.0)
+            color: Qt.hsla(0.53, 0.2, 0.75, 1.0)
             visible: false
         }
 

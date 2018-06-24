@@ -8,7 +8,7 @@ Rectangle
     property alias objTree: projectTreeView
 
     width: 330
-    color: Qt.hsla(0.0, 0.0, 0.39, 1.0)
+    color: Qt.hsla(0.63, 0.03, 0.39, 1.0)
     TabBar
     {
         id: bar
