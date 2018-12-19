@@ -1,0 +1,139 @@
+<html>
+<head>
+<title>Artist.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,0); }
+.s1 { color: rgb(0,0,128); font-weight: bold; }
+.s2 { color: rgb(0,128,128); font-weight: bold; }
+.s3 { color: rgb(128,128,128); font-style: italic; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+Artist.py</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0"> 
+ 
+</span><span class="s1">class </span><span class="s0">Artist(object): 
+ 
+    LOGIN = </span><span class="s2">'login'</span><span class="s0"> 
+    PASSWORD = </span><span class="s2">'password'</span><span class="s0"> 
+    NAME = </span><span class="s2">'name'</span><span class="s0"> 
+    SURNAME = </span><span class="s2">'surname'</span><span class="s0"> 
+ 
+    </span><span class="s1">def </span><span class="s0">__init__(self, login=</span><span class="s2">''</span><span class="s0">, password=</span><span class="s2">''</span><span class="s0">, name=</span><span class="s2">''</span><span class="s0">, surname=</span><span class="s2">''</span><span class="s0">): 
+        </span><span class="s3">&quot;&quot;&quot; 
+        This class is data structure for 
+        users of application. 
+        &quot;&quot;&quot;</span><span class="s0"> 
+        super(Artist, self).__init__() 
+        self._login = login 
+        self._password = password 
+        self._name = name 
+        self._surname = surname 
+ 
+    </span><span class="s1">def </span><span class="s0">__eq__(self, other): 
+        </span><span class="s1">try</span><span class="s0">: 
+            </span><span class="s1">return </span><span class="s0">self._login == other.login 
+        </span><span class="s1">except</span><span class="s0">: 
+            </span><span class="s1">return False</span><span class="s0"> 
+ 
+    </span><span class="s1">def </span><span class="s0">__str__(self): 
+        </span><span class="s1">return </span><span class="s2">'Artist({0}, {1})'</span><span class="s0">.format(self._login, self._password) 
+ 
+    @property 
+    </span><span class="s1">def </span><span class="s0">login(self): 
+        </span><span class="s1">return </span><span class="s0">self._login 
+ 
+    @property 
+    </span><span class="s1">def </span><span class="s0">password(self): 
+        </span><span class="s1">return </span><span class="s0">self._password 
+ 
+    @property 
+    </span><span class="s1">def </span><span class="s0">name(self): 
+        </span><span class="s1">return </span><span class="s0">self._name 
+ 
+    @property 
+    </span><span class="s1">def </span><span class="s0">surname(self): 
+        </span><span class="s1">return </span><span class="s0">self._surname 
+ 
+    @property 
+    </span><span class="s1">def </span><span class="s0">toDict(self): 
+        </span><span class="s1">return </span><span class="s0">{ 
+            self.LOGIN: self._login, 
+            self.PASSWORD: self._password, 
+            self.NAME: self._name, 
+            self.SURNAME: self._surname 
+        } 
+ 
+    @login.setter 
+    </span><span class="s1">def </span><span class="s0">login(self, login): 
+        </span><span class="s1">if not </span><span class="s0">isinstance(login, str): 
+            </span><span class="s1">raise </span><span class="s0">TypeError(</span><span class="s2">&quot;Expected type is &lt; str &gt;&quot;</span><span class="s0">) 
+ 
+        </span><span class="s1">if </span><span class="s0">login != </span><span class="s2">''</span><span class="s0">: 
+            self._login = login 
+ 
+    @password.setter 
+    </span><span class="s1">def </span><span class="s0">password(self, password): 
+        </span><span class="s1">if not </span><span class="s0">isinstance(password, str): 
+            </span><span class="s1">raise </span><span class="s0">TypeError(</span><span class="s2">&quot;Expected type is &lt; str &gt;&quot;</span><span class="s0">) 
+ 
+        </span><span class="s1">if </span><span class="s0">password != </span><span class="s2">''</span><span class="s0">: 
+            self._password = password 
+ 
+    @name.setter 
+    </span><span class="s1">def </span><span class="s0">name(self, name): 
+        </span><span class="s1">if not </span><span class="s0">isinstance(name, str): 
+            </span><span class="s1">raise </span><span class="s0">TypeError(</span><span class="s2">&quot;Expected type is &lt; str &gt;&quot;</span><span class="s0">) 
+ 
+        </span><span class="s1">if </span><span class="s0">name != </span><span class="s2">''</span><span class="s0">: 
+            self._name = name 
+ 
+    @surname.setter 
+    </span><span class="s1">def </span><span class="s0">surname(self, surname): 
+        </span><span class="s1">if not </span><span class="s0">isinstance(surname, str): 
+            </span><span class="s1">raise </span><span class="s0">TypeError(</span><span class="s2">&quot;Expected type is &lt; str &gt;&quot;</span><span class="s0">) 
+ 
+        </span><span class="s1">if </span><span class="s0">surname != </span><span class="s2">''</span><span class="s0">: 
+            self._name = surname 
+ 
+    </span><span class="s1">def </span><span class="s0">setDict(self, d): 
+        </span><span class="s3">&quot;&quot;&quot; 
+        :param d: &lt; dict &gt; 
+        { 
+            'login', 
+            'password', 
+            'name', 
+            'surname' 
+        } 
+        &quot;&quot;&quot;</span><span class="s0"> 
+        self.login = d[self.LOGIN] 
+        self.password = d[self.PASSWORD] 
+        self.name = d[self.NAME] 
+        self.surname = d[self.SURNAME] 
+ 
+    </span><span class="s1">def </span><span class="s0">isIdentical(self, other): 
+        </span><span class="s1">if not </span><span class="s0">isinstance(other, Artist): 
+            </span><span class="s1">raise </span><span class="s0">TypeError(</span><span class="s2">&quot;Expected type is 'Artist'&quot;</span><span class="s0">) 
+ 
+        login = self._login == other.login 
+        pasw = self._password == other.password 
+        name = self._name == other.name 
+        surname = self._surname == other.surname 
+ 
+        </span><span class="s1">return </span><span class="s0">name </span><span class="s1">and </span><span class="s0">surname </span><span class="s1">and </span><span class="s0">login </span><span class="s1">and </span><span class="s0">pasw 
+ 
+    </span><span class="s1">def </span><span class="s0">clear(self): 
+        self._name = </span><span class="s2">''</span><span class="s0"> 
+        self._surname = </span><span class="s2">''</span><span class="s0"> 
+        self._login = </span><span class="s2">''</span><span class="s0"> 
+        self._password = </span><span class="s2">''</span><span class="s0"> 
+</span></pre>
+</body>
+</html>

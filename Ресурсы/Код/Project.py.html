@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>Project.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(0,128,128); font-weight: bold; }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+Project.py</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">from </span><span class="s1">Application.API.Core.Containers.VariablesContainer </span><span class="s0">import </span><span class="s1">VariablesContainer 
+</span><span class="s0">from </span><span class="s1">Application.API.Core.Types.Project.Metainfo </span><span class="s0">import </span><span class="s1">Metainfo 
+</span><span class="s0">from </span><span class="s1">Application.API.Core.Types.Variable </span><span class="s0">import </span><span class="s1">Variable 
+ 
+ 
+</span><span class="s0">class </span><span class="s1">Project(object): 
+ 
+    METAINFO = </span><span class="s2">'metainfo'</span><span class="s1"> 
+    VARIABLES = </span><span class="s2">'variables'</span><span class="s1"> 
+ 
+    </span><span class="s0">def </span><span class="s1">__init__(self): 
+        super(Project, self).__init__() 
+        self._metainfo = Metainfo() 
+        self._variables = VariablesContainer() 
+        self._variables.insertVariable(Variable(</span><span class="s2">&quot;XPROJECT&quot;</span><span class="s1">, </span><span class="s2">&quot;&quot;</span><span class="s1">, </span><span class="s0">True</span><span class="s1">, </span><span class="s2">&quot;Project&quot;</span><span class="s1">, 
+                                                </span><span class="s2">&quot;This variable contain current project name&quot;</span><span class="s1">)) 
+        self._variables.insertVariable(Variable(</span><span class="s2">&quot;XPATH&quot;</span><span class="s1">, </span><span class="s2">&quot;&quot;</span><span class="s1">, </span><span class="s0">True</span><span class="s1">, </span><span class="s2">&quot;Project&quot;</span><span class="s1">, 
+                                                </span><span class="s2">&quot;This variable contain current project path&quot;</span><span class="s1">)) 
+        self._variables.forbiddenForChangeNames = (</span><span class="s2">&quot;XPROJECT&quot;</span><span class="s1">, </span><span class="s2">&quot;XPATH&quot;</span><span class="s1">) 
+ 
+    @property 
+    </span><span class="s0">def </span><span class="s1">metainfo(self): 
+        </span><span class="s0">return </span><span class="s1">self._metainfo 
+ 
+    @property 
+    </span><span class="s0">def </span><span class="s1">variables(self): 
+        </span><span class="s0">return </span><span class="s1">self._variables 
+ 
+    @metainfo.setter 
+    </span><span class="s0">def </span><span class="s1">metainfo(self, metainfo): 
+        </span><span class="s0">if not </span><span class="s1">isinstance(metainfo, Metainfo): 
+            </span><span class="s0">raise </span><span class="s1">TypeError(</span><span class="s2">&quot;Expected type &lt; Metainfo &gt;&quot;</span><span class="s1">) 
+ 
+    @variables.setter 
+    </span><span class="s0">def </span><span class="s1">variables(self, variables): 
+        </span><span class="s0">if not </span><span class="s1">isinstance(variables, VariablesContainer): 
+            </span><span class="s0">raise </span><span class="s1">TypeError(</span><span class="s2">&quot;Expected type &lt; VariablesContainer &gt;&quot;</span><span class="s1">)</span></pre>
+</body>
+</html>

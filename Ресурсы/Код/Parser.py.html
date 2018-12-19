@@ -1,0 +1,212 @@
+<html>
+<head>
+<title>Parser.py</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.ln { color: #999999; font-weight: normal; font-style: normal; }
+.s0 { color: rgb(0,0,128); font-weight: bold; }
+.s1 { color: rgb(0,0,0); }
+.s2 { color: rgb(128,128,128); font-style: italic; }
+.s3 { color: rgb(0,128,128); font-weight: bold; }
+.s4 { color: rgb(0,0,255); }
+</style>
+</head>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<TR><TD><CENTER>
+<FONT FACE="Arial, Helvetica" COLOR="#000000">
+Parser.py</FONT>
+</center></TD></TR></TABLE>
+<pre>
+<span class="s0">from </span><span class="s1">Application.API.VariablesProcessing.RegExps </span><span class="s0">import </span><span class="s1">RegExps 
+ 
+</span><span class="s0">class </span><span class="s1">Parser(): 
+ 
+    </span><span class="s0">def </span><span class="s1">__init__(self): 
+        </span><span class="s2">&quot;&quot;&quot; 
+        Example: &quot;@CGLIB@/Scripts/sceneLoad.py&quot; 
+        Words: @CGLIB@ 
+        Variables: CGLIB 
+        &quot;&quot;&quot;</span><span class="s1"> 
+        super(Parser, self).__init__() 
+ 
+    </span><span class="s0">def </span><span class="s1">hasVariables(self, string): 
+        </span><span class="s2">&quot;&quot;&quot; 
+        Checks for app variables in a string 
+        :param string: &lt;str&gt; string 
+        :return &lt;bool&gt; 
+        &quot;&quot;&quot;</span><span class="s1"> 
+        </span><span class="s0">if not </span><span class="s1">isinstance(string, str): </span><span class="s0">raise </span><span class="s1">TypeError(</span><span class="s3">'Excepted type: &lt;str&gt;'</span><span class="s1">) 
+        rx = RegExps.variables() 
+        index = rx.indexIn(string) 
+        </span><span class="s0">while </span><span class="s1">index &gt;= </span><span class="s4">0</span><span class="s1">: 
+            length = rx.matchedLength() 
+            start = index 
+            end = length + index 
+            match = string[start:end] 
+            </span><span class="s0">if </span><span class="s1">match: </span><span class="s0">return True</span><span class="s1"> 
+            index = rx.indexIn(string, index + length) 
+        </span><span class="s0">return False</span><span class="s1"> 
+ 
+    </span><span class="s0">def </span><span class="s1">variables(self, string): 
+        </span><span class="s2">&quot;&quot;&quot; 
+        Return list of app variables in string 
+        If no app variables return [] 
+        :param string: &lt;str&gt; string 
+        :return [&lt;str&gt;] 
+        &quot;&quot;&quot;</span><span class="s1"> 
+        </span><span class="s0">if not </span><span class="s1">self.hasVariables(string): </span><span class="s0">return </span><span class="s1">[] 
+        variables = [] 
+        rx = RegExps.variables() 
+        index = rx.indexIn(string) 
+        </span><span class="s0">while </span><span class="s1">index &gt;= </span><span class="s4">0</span><span class="s1">: 
+            var = rx.cap(</span><span class="s4">1</span><span class="s1">) 
+            </span><span class="s0">if </span><span class="s1">var: variables.append(var) 
+            length = rx.matchedLength() 
+            index = rx.indexIn(string, index + length) 
+        </span><span class="s0">return </span><span class="s1">variables 
+ 
+    </span><span class="s0">def </span><span class="s1">words(self, string): 
+        </span><span class="s2">&quot;&quot;&quot; 
+        Return list of app varWords in string 
+        If no app variables return [] 
+        :param string: &lt;str&gt; string 
+        :return [&lt;str&gt;] 
+        &quot;&quot;&quot;</span><span class="s1"> 
+        </span><span class="s0">if not </span><span class="s1">self.hasVariables(string): </span><span class="s0">return </span><span class="s1">[] 
+        variables = [] 
+        rx = RegExps.variables() 
+        index = rx.indexIn(string) 
+        </span><span class="s0">while </span><span class="s1">index &gt;= </span><span class="s4">0</span><span class="s1">: 
+            varword = rx.cap(</span><span class="s4">0</span><span class="s1">) 
+            </span><span class="s0">if </span><span class="s1">varword: variables.append(varword) 
+            length = rx.matchedLength() 
+            index = rx.indexIn(string, index + length) 
+        </span><span class="s0">return </span><span class="s1">variables 
+ 
+    </span><span class="s0">def </span><span class="s1">variablesSlices(self, string, key=</span><span class="s3">'var'</span><span class="s1">): 
+        </span><span class="s2">&quot;&quot;&quot; 
+        if key == 'var': dict(var: slice) 
+            return 
+        else: 
+            return dict(slice: var) 
+ 
+        Indexes is tuple(start, end) of app variable position in string. (&lt;int&gt;, &lt;int&gt;) 
+        Var is a variable 
+        If no variables return {} 
+        :param string: &lt;str&gt; string 
+        :param key: &lt;str&gt; defines the key in the dict 
+        &quot;&quot;&quot;</span><span class="s1"> 
+        </span><span class="s0">if not </span><span class="s1">self.hasVariables(string): </span><span class="s0">return </span><span class="s1">{} 
+        map = {} 
+        rx = RegExps.variables() 
+        index = rx.indexIn(string) 
+        </span><span class="s0">while </span><span class="s1">index &gt;= </span><span class="s4">0</span><span class="s1">: 
+            length = rx.matchedLength() 
+            start = index 
+            end = length + index 
+            match = rx.cap(</span><span class="s4">1</span><span class="s1">) 
+            </span><span class="s0">if </span><span class="s1">match: 
+                </span><span class="s0">if </span><span class="s1">key == </span><span class="s3">'var'</span><span class="s1">: 
+                    map[match] = slice(start, end, </span><span class="s4">1</span><span class="s1">) 
+                </span><span class="s0">else</span><span class="s1">: 
+                    map[slice(start, end, </span><span class="s4">1</span><span class="s1">)] = match 
+            index = rx.indexIn(string, index + length) 
+        </span><span class="s0">return </span><span class="s1">map 
+ 
+    </span><span class="s2"># OS</span><span class="s1"> 
+    </span><span class="s0">def </span><span class="s1">hasOSVariables(self, string): 
+        </span><span class="s2">&quot;&quot;&quot; 
+        Checks for OS variables in a string 
+        :param string: &lt;str&gt; string 
+        :return &lt;bool&gt; 
+        &quot;&quot;&quot;</span><span class="s1"> 
+        </span><span class="s0">if not </span><span class="s1">isinstance(string, str): </span><span class="s0">raise </span><span class="s1">TypeError(</span><span class="s3">'Excepted type: &lt;str&gt;'</span><span class="s1">) 
+        rx = RegExps.OS() 
+        index = rx.indexIn(string) 
+        </span><span class="s0">while </span><span class="s1">index &gt;= </span><span class="s4">0</span><span class="s1">: 
+            length = rx.matchedLength() 
+            start = index 
+            end = length + index 
+            match = string[start:end] 
+            </span><span class="s0">if </span><span class="s1">match: </span><span class="s0">return True</span><span class="s1"> 
+            index = rx.indexIn(string, index + length) 
+        </span><span class="s0">return False</span><span class="s1"> 
+ 
+    </span><span class="s0">def </span><span class="s1">OSVariables(self, string): 
+        </span><span class="s2">&quot;&quot;&quot; 
+        Return list of OS variables in string 
+        If no app variables return [] 
+        :param string: &lt;str&gt; string 
+        :return [&lt;str&gt;] 
+        &quot;&quot;&quot;</span><span class="s1"> 
+        </span><span class="s0">if not </span><span class="s1">self.hasOSVariables(string): </span><span class="s0">return </span><span class="s1">[] 
+        variables = [] 
+        rx = RegExps.OS() 
+        index = rx.indexIn(string) 
+        </span><span class="s0">while </span><span class="s1">index &gt;= </span><span class="s4">0</span><span class="s1">: 
+            length = rx.matchedLength() 
+            match = rx.cap(</span><span class="s4">1</span><span class="s1">) 
+            </span><span class="s0">if </span><span class="s1">match: variables.append(match) 
+            index = rx.indexIn(string, index + length) 
+        </span><span class="s0">return </span><span class="s1">variables 
+ 
+    </span><span class="s0">def </span><span class="s1">OSWords(self, string): 
+        </span><span class="s2">&quot;&quot;&quot; 
+        Return list of app varWords in string 
+        If no app variables return [] 
+        :param string: &lt;str&gt; string 
+        :return [&lt;str&gt;] 
+        &quot;&quot;&quot;</span><span class="s1"> 
+        </span><span class="s0">if not </span><span class="s1">self.hasVariables(string): </span><span class="s0">return </span><span class="s1">[] 
+        variables = [] 
+        rx = RegExps.OS() 
+        index = rx.indexIn(string) 
+        </span><span class="s0">while </span><span class="s1">index &gt;= </span><span class="s4">0</span><span class="s1">: 
+            varword = rx.cap(</span><span class="s4">0</span><span class="s1">) 
+            </span><span class="s0">if </span><span class="s1">varword: variables.append(varword) 
+            length = rx.matchedLength() 
+            index = rx.indexIn(string, index + length) 
+        </span><span class="s0">return </span><span class="s1">variables 
+ 
+    </span><span class="s0">def </span><span class="s1">OSVariablesSlices(self, string, key=</span><span class="s3">'var'</span><span class="s1">): 
+        </span><span class="s2">&quot;&quot;&quot; 
+        if key == 'var': dict(var: slice) 
+            return 
+        else: 
+            return dict(slice: var) 
+ 
+        Indexes is tuple(start, end) of OS variable position in string. (&lt;int&gt;, &lt;int&gt;) 
+        Var is a variable 
+        If no variables return {} 
+        :param string: &lt;str&gt; string 
+        :param key: &lt;str&gt; defines the key in the dict 
+        &quot;&quot;&quot;</span><span class="s1"> 
+        </span><span class="s0">if not </span><span class="s1">self.hasOSVariables(string): </span><span class="s0">return </span><span class="s1">{} 
+        map = {} 
+        rx = RegExps.OS() 
+        index = rx.indexIn(string) 
+        </span><span class="s0">while </span><span class="s1">index &gt;= </span><span class="s4">0</span><span class="s1">: 
+            length = rx.matchedLength() 
+            start = index 
+            end = length + index 
+            match = rx.cap(</span><span class="s4">1</span><span class="s1">) 
+            </span><span class="s0">if </span><span class="s1">match: 
+                </span><span class="s0">if </span><span class="s1">key == </span><span class="s3">'var'</span><span class="s1">: 
+                    map[match] = slice(start, end, </span><span class="s4">1</span><span class="s1">) 
+                </span><span class="s0">else</span><span class="s1">: 
+                    map[slice(start, end, </span><span class="s4">1</span><span class="s1">)] = match 
+            index = rx.indexIn(string, index + length) 
+        </span><span class="s0">return </span><span class="s1">map 
+ 
+ 
+</span><span class="s0">if </span><span class="s1">__name__ == </span><span class="s3">'__main__'</span><span class="s1">: 
+    p = Parser() 
+    s = </span><span class="s3">'${windir}</span><span class="s0">\\</span><span class="s3">@PRJ@'</span><span class="s1"> 
+    win = </span><span class="s3">'%ROOT%/%PRJ%/name/%SCRIPT%/value/%IGN%'</span><span class="s1"> 
+    empty = </span><span class="s3">'ROOT/Windows/SM_LINK/gdb.exeROOT'</span><span class="s1"> 
+    slices = p.OSWords(s) 
+    print(slices) 
+</span></pre>
+</body>
+</html>
